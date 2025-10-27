@@ -1,0 +1,88 @@
+# ============================================
+# PDF to HTML AI Converter - Requirements
+# Version: 4.0 - Advanced AI Analysis
+# ============================================
+
+# Core PDF Processing
+PyMuPDF>=1.23.8,<1.25.0
+camelot-py[cv]>=0.11.0
+pdfplumber>=0.10.3
+pypdf>=3.17.0
+
+# Table Extraction (Camelot dependencies)
+opencv-python>=4.8.1
+ghostscript>=0.7
+
+# Image Processing
+Pillow>=10.1.0
+
+# Data Processing & Analysis
+pandas>=2.1.4
+numpy>=1.26.2
+
+# GUI Framework
+# tkinter (built-in with Python)
+
+# Utilities
+python-dateutil>=2.8.2
+
+# Optional: OCR Support (commented by default)
+# pytesseract>=0.3.10
+# Note: Requires Tesseract-OCR system installation
+# Windows: https://github.com/UB-Mannheim/tesseract/wiki
+# Linux: sudo apt-get install tesseract-ocr
+# macOS: brew install tesseract
+
+# Optional: Advanced NLP for content classification
+# transformers>=4.35.0
+# torch>=2.1.0
+
+# Optional: Enhanced PDF parsing
+# pdfminer.six>=20221105
+
+# Development Dependencies (optional)
+# pytest>=7.4.3
+# black>=23.12.0
+# flake8>=6.1.0
+
+# ============================================
+# Installation Instructions
+# ============================================
+# 
+# Basic Installation:
+# pip install -r requirements.txt
+#
+# With OCR Support:
+# 1. Install Tesseract-OCR on your system
+# 2. Uncomment pytesseract line above
+# 3. pip install pytesseract
+#
+# For development:
+# pip install -r requirements.txt pytest black flake8
+#
+# ============================================
+# System Requirements
+# ============================================
+#
+# Python: 3.8+
+# RAM: 4GB minimum, 8GB recommended
+# Disk: 500MB for dependencies
+# OS: Windows 10+, Linux, macOS
+#
+# ============================================
+# Troubleshooting
+# ============================================
+#
+# If camelot-py installation fails:
+# 1. Install Visual C++ Build Tools (Windows)
+# 2. Or use: pip install camelot-py[base]
+#
+# If opencv-python fails:
+# pip install opencv-python-headless
+#
+# If ghostscript errors occur:
+# Windows: Install Ghostscript from ghostscript.com
+# Linux: sudo apt-get install ghostscript
+# macOS: brew install ghostscript
+#
+# ============================================

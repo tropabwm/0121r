@@ -1,0 +1,296 @@
+# Configuração Avançada do PDF Converter Pro
+# Este arquivo permite customização profunda do comportamento
+
+# Configurações de Extração
+extraction:
+  # Método padrão: auto, camelot, pdfplumber, pymupdf
+  default_method: auto
+  
+  # Timeout para extração (segundos)
+  timeout: 300
+  
+  # Camelot específico
+  camelot:
+    flavor: lattice  # lattice ou stream
+    edge_tol: 50
+    row_tol: 2
+    column_tol: 0
+  
+  # PDFPlumber específico
+  pdfplumber:
+    vertical_strategy: lines
+    horizontal_strategy: lines
+    snap_tolerance: 3
+  
+  # PyMuPDF específico
+  pymupdf:
+    extract_images: false
+    extract_tables: true
+
+# Configurações de Design
+design:
+  # Tema padrão
+  default_theme: premium
+  
+  # Opções de responsividade
+  responsive:
+    enabled: true
+    breakpoints:
+      mobile: 768px
+      tablet: 1024px
+      desktop: 1440px
+  
+  # Animações
+  animations:
+    enabled: true
+    duration: 0.4s
+    easing: cubic-bezier(0.4, 0, 0.2, 1)
+  
+  # Tipografia
+  typography:
+    primary_font: "'Inter', sans-serif"
+    secondary_font: "'Poppins', sans-serif"
+    code_font: "'Fira Code', monospace"
+    base_size: 16px
+    line_height: 1.6
+  
+  # Cores customizadas (sobrescreve tema)
+  colors:
+    # premium:
+    #   primary: "#00d4ff"
+    #   secondary: "#1e3a8a"
+    #   dark: "#0f172a"
+    #   accent: "#10b981"
+
+# Configurações de Detecção
+detection:
+  # Palavras-chave para detectar seções
+  section_keywords:
+    - antidepressivos
+    - antipsicóticos
+    - estabilizadores
+    - benzodiazepínicos
+    - opioides
+    - canabinoides
+    - parkinson
+  
+  # Padrões para detectar medicamentos
+  drug_patterns:
+    - "^[A-Z]{3,}$"  # Nome em maiúsculas
+    - "^•\\s+.*:.*$"  # Bullet points com informação
+  
+  # Palavras-chave para detectar tabelas
+  table_keywords:
+    - tabela
+    - equivalência
+    - efeitos adversos
+    - dose equivalente
+
+# Configurações de Performance
+performance:
+  # Número de threads para processamento paralelo
+  max_workers: 4
+  
+  # Tamanho máximo de arquivo (MB)
+  max_file_size: 100
+  
+  # Cache de páginas
+  enable_cache: true
+  cache_size_mb: 500
+
+# Configurações de Saída
+output:
+  # Incluir metadata no HTML
+  include_metadata: true
+  
+  # Minificar HTML
+  minify: false
+  
+  # Incluir CSS inline ou externo
+  css_mode: inline  # inline ou external
+  
+  # Incluir índice navegável
+  table_of_contents:
+    enabled: true
+    max_depth: 3
+    position: top  # top, sidebar, ou bottom
+  
+  # Watermark
+  watermark:
+    enabled: false
+    text: "Convertido com PDF Converter Pro"
+    position: footer
+    opacity: 0.5
+
+# Configurações de Log
+logging:
+  # Nível: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: INFO
+  
+  # Salvar logs em arquivo
+  file_logging: true
+  log_file: logs/converter.log
+  
+  # Rotação de logs
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# Configurações de Integração
+integration:
+  # Webhook para notificações
+  webhook:
+    enabled: false
+    url: ""
+    events:
+      - conversion_complete
+      - conversion_failed
+  
+  # API REST
+  api:
+    enabled: false
+    port: 8000
+    host: localhost
+    auth_required: false
+
+# Configurações Experimentais
+experimental:
+  # OCR para PDFs escaneados
+  ocr:
+    enabled: false
+    language: por  # Tesseract language code
+    dpi: 300
+  
+  # Machine Learning para melhor detecção
+  ml_detection:
+    enabled: false
+    model_path: models/detector.pkl
+  
+  # Geração de thumbnails
+  thumbnails:
+    enabled: false
+    size: [200, 300]
+    format: png
+  
+  # Export para outros formatos
+  multi_format_export:
+    enabled: false
+    formats:
+      - markdown
+      - docx
+      - json
+
+# Configurações de Segurança
+security:
+  # Sanitizar HTML output
+  sanitize_html: true
+  
+  # Remover scripts e conteúdo potencialmente perigoso
+  remove_scripts: true
+  
+  # Validar PDFs antes de processar
+  validate_pdfs: true
+  
+  # Limite de páginas por documento
+  max_pages: 500
+
+# Personalização por tipo de documento
+document_types:
+  medical:
+    keywords: [medicamento, fármaco, dose, posologia]
+    custom_css: styles/medical.css
+    sections:
+      - name: Índice
+        pattern: "índice|sumário"
+      - name: Medicamentos
+        pattern: "^[A-Z]{3,}"
+      - name: Tabelas
+        pattern: "tabela|equivalência"
+  
+  technical:
+    keywords: [especificação, manual, técnico]
+    custom_css: styles/technical.css
+  
+  educational:
+    keywords: [capítulo, exercício, questão]
+    custom_css: styles/educational.css
+
+# Pós-processamento
+post_processing:
+  # Otimizar imagens extraídas
+  optimize_images:
+    enabled: true
+    quality: 85
+    max_width: 1920
+  
+  # Adicionar links internos
+  auto_linking:
+    enabled: true
+    link_sections: true
+    link_tables: true
+  
+  # Gerar sumário executivo
+  executive_summary:
+    enabled: false
+    max_sentences: 5
+
+# Notificações
+notifications:
+  # Desktop notifications
+  desktop:
+    enabled: true
+    on_complete: true
+    on_error: true
+  
+  # Email notifications
+  email:
+    enabled: false
+    smtp_server: smtp.gmail.com
+    smtp_port: 587
+    from_email: ""
+    to_email: ""
+    password: ""
+
+# Backup e versionamento
+backup:
+  # Criar backup do PDF original
+  backup_originals: false
+  backup_dir: backups/
+  
+  # Manter histórico de versões
+  versioning:
+    enabled: false
+    max_versions: 5
+
+# Configurações de UI
+ui:
+  # Tema da interface
+  theme: light  # light ou dark
+  
+  # Idioma
+  language: pt-BR
+  
+  # Mostrar dicas
+  show_tooltips: true
+  
+  # Confirmações
+  confirm_overwrite: true
+  confirm_batch: true
+  
+  # Janela
+  window:
+    width: 900
+    height: 700
+    resizable: true
+    remember_position: true
+
+# Plugins e extensões
+plugins:
+  enabled: false
+  directory: plugins/
+  auto_load: true
+  
+  # Lista de plugins habilitados
+  enabled_plugins:
+    # - custom_parser
+    # - advanced_tables
+    # - ocr_enhancer
